@@ -1,0 +1,19 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2168
+
+This script allows one to easily generate Doxygen documentation for C and C++ functions. Java could work, I haven\\&#039t tested.
+
+There are many of these scripts available, but I\\&#039ve found most are commonly severely restricted by the fact that they parse the C/C++ code themselves. Parsing C++ is hard. Very hard even. I wouldn\\&#039t consider parsing code myself, and especially not in VimScript.
+
+So the trick is this: use Doxygen itself to parse the code, and then parse that output instead. Doxygen can output to XML, which is easily processed further. In this case by applying an XSL transformation. VimScript is used to glue all this together, e.g. move to the correct line number, hightlight/remove the old tag.
+
+As a result this script has the following nice features:
+- Parses C++ code correctly, regardless of layout, interspersed comments, etc. If Doxygen cannot parse it there\\&#039s little need to add a Doxygen tag. See www.doxygen.org for further details if you think you\\&#039ve found a bug.
+- Re-uses old Doxygen tags, i.e. generates new tags dropping old items and inserting new ones.
+
+The maintenance bottleneck is the XSLT file, which should be kept up-to-date to the XML Doxygen outputs. Also, not all markup is kept intact. It is not my intention to make the XSLT file complete, I\\&#039m very pragmatic in that sense and I\\&#039ll only add what\\&#039s actually needed (at the moment: bold, italics, typewriter, (un)ordered lists).
+
+At the moment I\\&#039m looking for developers proficient with both Vim and XSLT who want to give this a spin. This is *alpha* software. I\\&#039m releasing it purely in the spirit of Bazaar development. I have not thoroughly tested this script yet. Since I\\&#039m more than likely to use my own creation I\\&#039ll probably fix bugs and update new versions.
+
+For all other users: feel free to download and use this. In my humble opinion it\\&#039ll serve you at least as good as the scripts already out there. But some hacking may be required.
+
+Sources are licensed under the liberal MIT license.
